@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
-    "format": "prettier -w \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
     "fix": "yarn format && yarn lint"
   },
   "dependencies": {
@@ -30,6 +30,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.4",
+    "prettier-stylelint-formatter": "^0.5.1-beta.2",
     "sass": "^1.58.0",
     "typescript": "5.1.6"
   }
