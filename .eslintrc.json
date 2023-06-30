@@ -1,0 +1,66 @@
+{
+  // グローバル変数を使用できる設定
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  // 設定を流用するためのもの
+  "extends": [
+    // Next.jsの基本ESLint構成
+    "next/core-web-vitals",
+    // reactのlint設定
+    "plugin:react/recommended",
+    // ES2015+ (ES6+) のインポート/エクスポート構文のlintingをサポートし、ファイルパスとインポート名のスペルミスの問題を防ぐ
+    "plugin:import/warnings",
+    // import順のtypescriptサポート
+    "plugin:import/typescript",
+    // prettierの設定
+    "prettier"
+  ],
+  // TypeScript ESTreeを利用してESLintがTypeScriptソースコードをリントできるようにするESLintパーサー。
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    // 使用する追加の言語機能を示すオブジェクト
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    // 使用するECMAScript構文のバージョンを指定可能
+    "ecmaVersion": 12,
+    "project": "./tsconfig.eslint.json",
+    // コードがECMAScriptモジュールにある場合は、「script」（デフォルト）または「module」に設定
+    "sourceType": "module"
+  },
+  // サードパーティのプラグインの使用
+  "plugins": ["react", "@typescript-eslint", "import", "unused-imports"],
+  "ignorePatterns": ["vite.config.ts"],
+  "rules": {
+    // eslint-plugin-reactを使用している場合、react/jsx-uses-reactとreact/react-in-jsx-scope のルールは不要になるので、無効にするか削除することができる
+    // https://zenn.dev/ryuu/scraps/583dad79532879
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    // 未使用の es6 モジュールのインポートを見つけて削除
+    "unused-imports/no-unused-imports": "error",
+    // 未使用の変数の禁止 ベースルールをoffにする
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    // import順の設定
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin", // 組み込みモジュール
+          "external", // yarnでインストールした外部ライブラリ
+          "internal", // 自作モジュール
+          "parent", // 親階層のファイル
+          "sibling", // 同階層のファイル
+          "index" // 同階層の index ファイル
+        ],
+        "newlines-between": "always", // グループ毎にで改行を入れる
+        "alphabetize": {
+          "order": "asc", // 昇順にソート
+          "caseInsensitive": true // 小文字大文字を区別する
+        }
+      }
+    ]
+  }
+}
