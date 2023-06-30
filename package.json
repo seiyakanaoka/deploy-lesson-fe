@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
+    "fix": "yarn format && yarn lint"
   },
   "dependencies": {
     "next": "13.4.7",
@@ -18,6 +21,8 @@
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "eslint-config-prettier": "^8.7.0",
@@ -25,6 +30,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.4",
+    "prettier-stylelint-formatter": "^0.5.1-beta.2",
     "sass": "^1.58.0",
     "typescript": "5.1.6"
   }
