@@ -9,7 +9,9 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
-    "fix": "yarn format && yarn lint"
+    "fix": "yarn format && yarn lint",
+    "lintcss": "stylelint '**/*.{css,scss,sass}'",
+    "lintcss:fix": "stylelint --fix '**/*.{css,scss,sass}'"
   },
   "dependencies": {
     "next": "13.4.7",
